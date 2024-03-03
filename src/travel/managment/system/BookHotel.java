@@ -24,7 +24,7 @@ public class BookHotel extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.white);
         
         JLabel text = new JLabel("BOOK HOTEL");
-        text.setBounds(180, 10, 200, 30);
+        text.setBounds(140, 10, 200, 30);
         text.setFont(new Font("Tahoma", Font.BOLD, 20));
         add(text);
         
@@ -191,7 +191,7 @@ public class BookHotel extends JFrame implements ActionListener{
         back.addActionListener(this);
         add(back);
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/bookhotel1.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/bookhotel3.jpg"));
         Image i2 = i1.getImage().getScaledInstance(450, 520, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel icon = new JLabel(i3);

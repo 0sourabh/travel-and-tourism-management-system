@@ -17,7 +17,7 @@ public class ViewBookedHotel extends JFrame  implements ActionListener {
         
         JLabel text = new JLabel("VIEW BOOKED HOTEL DETAILS");
         text.setFont(new Font("Tahoma",Font.BOLD,20));
-        text.setBounds(60,0,300,30);
+        text.setBounds(70,0,350,30);
         add(text);
 
         
@@ -132,16 +132,16 @@ public class ViewBookedHotel extends JFrame  implements ActionListener {
         back = new JButton("Back");
         back.setBackground(new Color(0, 0, 139));
         back.setForeground(Color.white);
-        back.setBounds(105,450,100,25);
+        back.setBounds(125,450,100,25);
         back.addActionListener(this);
         add(back);
         
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/viewpackage.jpg"));
-        Image i2 = i1.getImage().getScaledInstance(450,450, Image.SCALE_DEFAULT);
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/bookhotel1.jpg"));
+        Image i2 = i1.getImage().getScaledInstance(550,500, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
-        image.setBounds(400,0,450,450);
+        image.setBounds(400,0,550,500);
         add(image);
         
         
