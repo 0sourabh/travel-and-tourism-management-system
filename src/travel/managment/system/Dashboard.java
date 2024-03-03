@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class Dashboard extends JFrame implements ActionListener{
     
     String username;
-    JButton payments,viewBookedHotels,bookHotels,destinations,viewHotels, viewPackages,bookPackages,addPersonalDetails,viewPersonalDetails,updatePersonalDetails,checkPackages;
+    JButton deletePersonalDetails,about,notepad,calculator,payments,viewBookedHotels,bookHotels,destinations,viewHotels, viewPackages,bookPackages,addPersonalDetails,viewPersonalDetails,updatePersonalDetails,checkPackages;
     
     
     Dashboard(String username){
@@ -69,13 +69,13 @@ public class Dashboard extends JFrame implements ActionListener{
         viewPersonalDetails.addActionListener(this);
         p2.add(viewPersonalDetails);
         
-        JButton deletePersonalDetails = new JButton("Delete Personal Details");
+        deletePersonalDetails = new JButton("Delete Personal Details");
         deletePersonalDetails.setBounds(0, 155, 300, 50);
         deletePersonalDetails.setBackground(new Color(255, 164, 0));
         deletePersonalDetails.setForeground(Color.white);
         deletePersonalDetails.setFont(new Font("Tahoma",Font.PLAIN,20));
         deletePersonalDetails.setBorder(BorderFactory.createEmptyBorder());
-        //addPersonalDetails.addActionListener(this);
+        deletePersonalDetails.addActionListener(this);
         p2.add(deletePersonalDetails);
         
         
@@ -156,33 +156,33 @@ public class Dashboard extends JFrame implements ActionListener{
         payments.addActionListener(this);
         p2.add(payments);
         
-        JButton calculator = new JButton("Calculator");
+        calculator = new JButton("Calculator");
         calculator.setBounds(0, 605, 300, 50);
         calculator.setBackground(new Color(255, 164, 0));
         calculator.setForeground(Color.white);
         calculator.setFont(new Font("Tahoma",Font.PLAIN,20));
         calculator.setBorder(BorderFactory.createEmptyBorder());
-        //addPersonalDetails.addActionListener(this);
+        calculator.addActionListener(this);
         p2.add(calculator);
         
         
-        JButton notepad = new JButton("NotePad");
+        notepad = new JButton("NotePad");
         notepad.setBounds(0, 655, 300, 50);
         notepad.setBackground(new Color(255, 164, 0));
         notepad.setForeground(Color.white);
         notepad.setFont(new Font("Tahoma",Font.PLAIN,20));
         notepad.setBorder(BorderFactory.createEmptyBorder());
-        //addPersonalDetails.addActionListener(this);
+        notepad.addActionListener(this);
         p2.add(notepad);
         
         
-        JButton about = new JButton("About");
+        about = new JButton("About");
         about.setBounds(0, 705, 300, 50);
         about.setBackground(new Color(255, 164, 0));
         about.setForeground(Color.white);
         about.setFont(new Font("Tahoma",Font.PLAIN,20));
         about.setBorder(BorderFactory.createEmptyBorder());
-        //addPersonalDetails.addActionListener(this);
+        about.addActionListener(this);
         p2.add(about);
         
         
@@ -240,6 +240,32 @@ public class Dashboard extends JFrame implements ActionListener{
         }else if(ae.getSource() == payments){
         
             new Payment(); 
+        }else if(ae.getSource() == calculator){
+            
+            try{
+            
+                Runtime.getRuntime().exec("calc.exe");
+            }catch(Exception e){
+            
+                e.printStackTrace();
+            }
+        
+            
+        }else if(ae.getSource() == notepad){
+            
+            try{
+            
+                Runtime.getRuntime().exec("notepad.exe");
+            }catch(Exception e){
+            
+                e.printStackTrace();
+            }
+        }else if(ae.getSource() == about){
+        
+            new About(); 
+        }else if(ae.getSource() == deletePersonalDetails){
+        
+            new DeleteDetails(username); 
         }
     
     }
