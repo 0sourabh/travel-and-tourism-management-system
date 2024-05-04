@@ -11,9 +11,15 @@ public class AddCustomer extends JFrame implements ActionListener {
     JComboBox<String> comboid; // Specify the type parameter for JComboBox
     JTextField tfphone, tfemail, tfaddress, tfnumber, tfcountry;
     JRadioButton rmale, rfemale;
-    JButton add, back;
+    JButton add,viewPersonalDetails,updatePersonalDetails,deletePersonalDetails, back;
+    
+    private String username;
 
-    AddCustomer(String username) {
+    AddCustomer(String username)
+         
+        {
+        this.username = username;
+        
         setBounds(350,180,900,520);
         setLayout(null);
         getContentPane().setBackground(Color.white);
@@ -116,14 +122,41 @@ public class AddCustomer extends JFrame implements ActionListener {
         add = new JButton("Add");
         add.setBackground(new Color(0, 0, 139));
         add.setForeground(Color.white);
-        add.setBounds(70, 430, 100, 25);
+        add.setBounds(230, 430, 100, 25);
         add.addActionListener(this);
         add(add);
+        
+        viewPersonalDetails = new JButton("View Details");
+        viewPersonalDetails.setBounds(420, 20, 125, 25);
+        viewPersonalDetails.setBackground(new Color(0, 0, 139));
+        viewPersonalDetails.setForeground(Color.white);
+        //viewPersonalDetails.setFont(new Font("Tahoma",Font.PLAIN,20));
+        //viewPersonalDetails.setBorder(BorderFactory.createEmptyBorder());
+        viewPersonalDetails.addActionListener(this);
+        add(viewPersonalDetails);
+        
+        updatePersonalDetails = new JButton("Update Details");
+        updatePersonalDetails.setBounds(565,20, 125, 25);
+        updatePersonalDetails.setBackground(new Color(0, 0, 139));
+        updatePersonalDetails.setForeground(Color.white);
+        //updatePersonalDetails.setFont(new Font("Tahoma",Font.PLAIN,20));
+        //updatePersonalDetails.setBorder(BorderFactory.createEmptyBorder());
+        updatePersonalDetails.addActionListener(this);
+        add(updatePersonalDetails);
+        
+        deletePersonalDetails = new JButton("Delete Details");
+        deletePersonalDetails.setBounds(710, 20, 125, 25);
+        deletePersonalDetails.setBackground(new Color(0, 0, 139));
+        deletePersonalDetails.setForeground(Color.white);
+        //deletePersonalDetails.setFont(new Font("Tahoma",Font.PLAIN,20));
+        //deletePersonalDetails.setBorder(BorderFactory.createEmptyBorder());
+        deletePersonalDetails.addActionListener(this);
+        add(deletePersonalDetails);
 
         back = new JButton("Back");
         back.setBackground(new Color(0, 0, 139));
         back.setForeground(Color.white);
-        back.setBounds(220, 430, 100, 25);
+        back.setBounds(70, 430, 100, 25);
         back.addActionListener(this);
         add(back);
 
@@ -161,7 +194,9 @@ public class AddCustomer extends JFrame implements ActionListener {
             if (rmale.isSelected()) {
 
                 gender = "Male";
-            } else {
+            }
+            
+            else {
 
                 gender = "Female";
 
@@ -185,7 +220,20 @@ public class AddCustomer extends JFrame implements ActionListener {
 
             }
 
-        } else {
+        } 
+        else if(ae.getSource() == updatePersonalDetails){
+        
+            new UpdateCustomer(username);   
+            }
+        else if(ae.getSource() == viewPersonalDetails){
+        
+            new ViewCustomer(username);   
+        }
+        else if(ae.getSource() == deletePersonalDetails){
+        
+            new DeleteDetails(username);   
+        }
+        else {
             setVisible(false);
         }
     }

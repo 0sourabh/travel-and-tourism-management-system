@@ -42,56 +42,67 @@ public class ViewPackage extends JFrame  implements ActionListener {
         add(labelpackage);
         
         
+        JLabel lbldate = new JLabel("Valid From");
+        lbldate.setBounds(30, 160, 150, 25);
+        lbldate.setFont(new Font("SansSerif", Font.BOLD, 20));
+        add(lbldate);
+        
+        JLabel labeldate = new JLabel();
+        labeldate.setBounds(220, 160, 150, 25);
+        labeldate.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        add(labeldate);
+        
+        
         JLabel lblpersons = new JLabel("Total Persons");
-        lblpersons.setBounds(30, 160, 150, 25);
+        lblpersons.setBounds(30, 200, 150, 25);
         lblpersons.setFont(new Font("SansSerif", Font.BOLD, 20));
         add(lblpersons);
         
         JLabel labelpersons = new JLabel();
-        labelpersons.setBounds(220, 160, 150, 25);
+        labelpersons.setBounds(220, 200, 150, 25);
         labelpersons.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(labelpersons);
         
         JLabel lblid = new JLabel("Id");
-        lblid.setBounds(30, 200, 150, 25);
+        lblid.setBounds(30, 240, 150, 25);
         lblid.setFont(new Font("SansSerif", Font.BOLD, 20));
         add(lblid);
         
         JLabel labelid = new JLabel();
-        labelid.setBounds(220, 200, 200, 25);
+        labelid.setBounds(220, 240, 200, 25);
         labelid.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(labelid);
         
         
         JLabel lblnumber = new JLabel("Number");
-        lblnumber.setBounds(30, 240, 150, 25);
+        lblnumber.setBounds(30, 280, 150, 25);
         lblnumber.setFont(new Font("SansSerif", Font.BOLD, 20));
         add(lblnumber);
         
         JLabel labelnumber = new JLabel();
-        labelnumber.setBounds(220, 240, 150, 25);
+        labelnumber.setBounds(220, 280, 150, 25);
         labelnumber.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(labelnumber);
         
         
         JLabel lblphone = new JLabel("Phone");
-        lblphone.setBounds(30, 280, 150, 25);
+        lblphone.setBounds(30, 320, 150, 25);
         lblphone.setFont(new Font("SansSerif", Font.BOLD, 20));
         add(lblphone);
         
         JLabel labelphone = new JLabel();
-        labelphone.setBounds(220, 280, 150, 25);
+        labelphone.setBounds(220, 320, 150, 25);
         labelphone.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(labelphone);
         
         
         JLabel lblprice = new JLabel("Price");
-        lblprice.setBounds(30, 320, 150, 25);
+        lblprice.setBounds(30, 360, 150, 25);
         lblprice.setFont(new Font("SansSerif", Font.BOLD, 20));
         add(lblprice);
         
         JLabel labelprice = new JLabel();
-        labelprice.setBounds(220, 320, 150, 25);
+        labelprice.setBounds(220, 360, 150, 25);
         labelprice.setFont(new Font("SansSerif", Font.PLAIN, 16));
         add(labelprice);
         
@@ -121,15 +132,17 @@ public class ViewPackage extends JFrame  implements ActionListener {
             String query = "Select * from bookpackage where username ='"+username+"'";
             ResultSet rs = conn.s.executeQuery(query);
             while(rs.next()){
-            
-                labelusername.setText(rs.getString("username"));
-                labelid.setText(rs.getString("id"));
-                labelnumber.setText(rs.getString("number"));
-                labelpackage.setText(rs.getString("package"));
-                labelprice.setText(rs.getString("price"));
-                labelpersons.setText(rs.getString("persons"));
-                labelphone.setText(rs.getString("phone"));
-            }
+    labelusername.setText(rs.getString("username"));
+    labelid.setText(rs.getString("id"));
+    labelnumber.setText(rs.getString("number"));
+    labelpackage.setText(rs.getString("package"));
+    labelprice.setText(rs.getString("price"));
+    labelpersons.setText(rs.getString("persons"));
+    labelphone.setText(rs.getString("phone"));
+    labeldate.setText(rs.getString("booking_date"));
+    
+}
+
             
         } catch (Exception e){
          

@@ -112,14 +112,14 @@ public class UpdateCustomer extends JFrame implements ActionListener {
         add = new JButton("Update");
         add.setBackground(new Color(0, 0, 139));
         add.setForeground(Color.white);
-        add.setBounds(70, 430, 100, 25);
+        add.setBounds(220, 430, 100, 25);
         add.addActionListener(this);
         add(add);
 
         back = new JButton("Back");
         back.setBackground(new Color(0, 0, 139));
         back.setForeground(Color.white);
-        back.setBounds(220, 430, 100, 25);
+        back.setBounds(70, 430, 100, 25);
         back.addActionListener(this);
         add(back);
 

@@ -4,14 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CheckPackage extends JFrame {
+   
     
     CheckPackage() {
     
         setBounds(350,180,900,520);
         
-        String[] package1 = {"GOLD PACKAGE" ,"6 DAYS & 7 NIGHTS","5 Star Hotels","Full City Tour","Personal Guide","Airport Assistance","Meal Included","Adventure Activities","Book Now!!","Price:150000/-","package1.jpg"};
-        String[] package2 = {"SILVER PACKAGE","6 DAYS & 7 NIGHTS","3 Star Hotels","Full City Tour","Personal Guide","Cab Service","Meal Included","Clubbing","Book Now!!","Price:75000/-","package2.jpg"};
-        String[] package3 = {"BRONZE PACKAGE","2 DAYS & 3 NIGHTS","Non AC Hotels","Famous Places Visit","Personal Guide","Bus Service","Meal Included","Dance & Party","Book Now!!","Price:25000/-","package3.jpg"};
+        String[] package1 = {"GOLD PACKAGE" ,"6 DAYS & 7 NIGHTS","5 Star Hotels","Full Tour","Personal Guide","Personal Car","Meal Included","Clubbing","Book Now!!","Price: 150000/PER PERSON","package1.jpg"};
+        String[] package2 = {"SILVER PACKAGE","3 DAYS & 4 NIGHTS","3 Star Hotels","Full City Tour","Personal Guide","Personal Bike","Meal Included","          ","Book Now!!","Price: 75000/PER PERSON","package2.jpg"};
+        String[] package3 = {"BRONZE PACKAGE","2 DAYS & 3 NIGHTS","AC Hotels","Famous Places Visit","Personal Guide","Bus Service","Meal Included","         ","Book Now!!","Price: 25000/PER PERSON","package3.jpg"};
         
         JTabbedPane tab = new JTabbedPane();
         
@@ -42,8 +43,8 @@ public class CheckPackage extends JFrame {
         l1.setFont(new Font("Tahoma",Font.BOLD,25));
         p1.add(l1);
         
-        JLabel lsub = new JLabel("ALL OVER INDIA");
-        lsub.setBounds(160, 30, 300, 30);
+        JLabel lsub = new JLabel("AVAILABLE IN ALL DESTINATIONS");
+        lsub.setBounds(115, 30, 300, 30);
         lsub.setForeground(Color.black);
         lsub.setFont(new Font("Tahoma",Font.BOLD,10));
         p1.add(lsub);
@@ -100,7 +101,7 @@ public class CheckPackage extends JFrame {
         
         
         JLabel l10 = new JLabel(pack[9]);
-        l10.setBounds(550, 410, 300, 30);
+        l10.setBounds(500, 410, 300, 30);
         l10.setForeground(Color.red);
         l10.setFont(new Font("Tahoma",Font.BOLD,15));
         p1.add(l10);
@@ -114,6 +115,9 @@ public class CheckPackage extends JFrame {
         p1.add(icon);
         
         return p1;
+        
+        
+        
     
     }
     

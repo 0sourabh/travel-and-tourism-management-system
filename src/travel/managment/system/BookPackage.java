@@ -1,5 +1,6 @@
 package travel.managment.system;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,7 +12,8 @@ public class BookPackage extends JFrame implements ActionListener{
     JTextField tfpersons;
     String username;
     JLabel labelusername,labelid,labelnumber,labelphone,labelprice;
-    JButton checkprice,bookpackage,back;
+    JButton checkprice,bookpackage,viewPackages,back;
+    JDateChooser dateChooser;
     
     
     BookPackage(String username){
@@ -59,44 +61,53 @@ public class BookPackage extends JFrame implements ActionListener{
         tfpersons.setBounds(250,150,200,25);
         add(tfpersons);
         
+        JLabel lbldate = new JLabel("Valid From");
+        lbldate.setBounds(40, 190, 150, 20);
+        lbldate.setFont(new Font("Tahoma", Font.BOLD, 16));
+        add(lbldate);
+        
+        dateChooser = new JDateChooser();
+        dateChooser.setBounds(250, 190, 200, 25);
+        add(dateChooser);
+        
         JLabel lblid = new JLabel("Id");
-        lblid.setBounds(40, 190, 150, 25);
+        lblid.setBounds(40, 230, 150, 25);
         lblid.setFont(new Font("Tahoma", Font.BOLD, 16));
         add(lblid);
         
         labelid = new JLabel();
-        labelid.setBounds(250, 190, 200, 25);
+        labelid.setBounds(250, 230, 200, 25);
         labelid.setFont(new Font("Tahoma", Font.PLAIN, 16));
         add(labelid);
         
         
         JLabel lblnumber = new JLabel("Number");
-        lblnumber.setBounds(40, 230, 150, 25);
+        lblnumber.setBounds(40, 270, 150, 25);
         lblnumber.setFont(new Font("Tahoma", Font.BOLD, 16));
         add(lblnumber);
         
         labelnumber = new JLabel();
-        labelnumber.setBounds(250, 230, 200, 25);
+        labelnumber.setBounds(250, 270, 200, 25);
         labelnumber.setFont(new Font("SansSerif", Font.PLAIN, 20));
         add(labelnumber);
         
         JLabel lblphone = new JLabel("Phone");
-        lblphone.setBounds(40, 270, 150, 25);
+        lblphone.setBounds(40, 310, 150, 25);
         lblphone.setFont(new Font("Tahoma", Font.BOLD, 16));
         add(lblphone);
         
         labelphone = new JLabel();
-        labelphone.setBounds(250, 270, 200, 25);
+        labelphone.setBounds(250, 310, 200, 25);
         labelphone.setFont(new Font("SansSerif", Font.PLAIN, 20));
         add(labelphone);
         
         JLabel lbltotal = new JLabel("Total Price");
-        lbltotal.setBounds(40, 310, 150, 25);
+        lbltotal.setBounds(40, 350, 150, 25);
         lbltotal.setFont(new Font("Tahoma", Font.BOLD, 16));
         add(lbltotal);
         
         labelprice = new JLabel();
-        labelprice.setBounds(250, 310, 200, 25);
+        labelprice.setBounds(250, 350, 200, 25);
         labelprice.setFont(new Font("SansSerif", Font.PLAIN, 20));
         add(labelprice);
         
@@ -125,22 +136,32 @@ public class BookPackage extends JFrame implements ActionListener{
         checkprice = new JButton ("Check Price");
         checkprice.setBackground(new Color(0, 0, 139));
         checkprice.setForeground(Color.white);
-        checkprice.setBounds(60,380,120,25);
+        checkprice.setBounds(200,430,120,25);
         checkprice.addActionListener(this);
         add(checkprice);
         
         bookpackage = new JButton ("Book Package");
         bookpackage.setBackground(new Color(0, 0, 139));
         bookpackage.setForeground(Color.white);
-        bookpackage.setBounds(200,380,120,25);
+        bookpackage.setBounds(340,430,120,25);
         bookpackage.addActionListener(this);
         add(bookpackage);
+        
+        viewPackages = new JButton("View Booked Packages");
+        viewPackages.setBounds(580, 40, 180, 25);
+        viewPackages.setBackground(new Color(0, 0, 139));
+        viewPackages.setForeground(Color.white);
+//        viewPackages.setFont(new Font("Tahoma",Font.PLAIN,20));
+//        viewPackages.setBorder(BorderFactory.createEmptyBorder());
+        viewPackages.addActionListener(this);
+        add(viewPackages);
+        
         
         
         back = new JButton ("Back");
         back.setBackground(new Color(0, 0, 139));
         back.setForeground(Color.white);
-        back.setBounds(340,380,120,25);
+        back.setBounds(60,430,120,25);
         back.addActionListener(this);
         add(back);
         
@@ -148,7 +169,7 @@ public class BookPackage extends JFrame implements ActionListener{
         Image i2 = i1.getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel icon = new JLabel(i3);
-        icon.setBounds(450, 10 , 400, 400);
+        icon.setBounds(450, 50 , 400, 400);
         add(icon);
         
         
@@ -183,8 +204,7 @@ public class BookPackage extends JFrame implements ActionListener{
             try {
             
                 Conn c = new Conn();
-                c.s.executeUpdate("insert into bookpackage values('"+labelusername.getText()+"','"+cpackage.getSelectedItem()+"','"+tfpersons.getText()+"','"+labelid.getText()+"','"+labelnumber.getText()+"','"+labelphone.getText()+"','"+labelprice.getText()+"')");
-                
+               c.s.executeUpdate("INSERT INTO bookpackage (username, package, persons, id, number, phone, price, booking_date) VALUES ('" + labelusername.getText() + "', '" + cpackage.getSelectedItem() + "', '" + tfpersons.getText() + "', '" + labelid.getText() + "', '" + labelnumber.getText() + "', '" + labelphone.getText() + "', '" + labelprice.getText() + "', CURDATE())");
                 JOptionPane.showMessageDialog(null,"Package Booked Successfully");
                 setVisible(false);
             } catch(Exception e){
@@ -192,7 +212,11 @@ public class BookPackage extends JFrame implements ActionListener{
                 e.printStackTrace();
             }
             
-        }else if(ae.getSource() == back){
+        }else if(ae.getSource() == viewPackages){
+        
+            new ViewPackage(username); 
+        }
+        else if(ae.getSource() == back){
         
             setVisible(false);
         }

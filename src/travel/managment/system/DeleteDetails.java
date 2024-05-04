@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class DeleteDetails extends JFrame  implements ActionListener {
     
-    JButton back;
+    JButton delete;
     
     String username;
     
@@ -112,12 +112,15 @@ public class DeleteDetails extends JFrame  implements ActionListener {
         labelphone.setFont(new Font("SansSerif", Font.PLAIN, 20));
         add(labelphone);
         
-        back = new JButton("Delete");
-        back.setBackground(new Color(0, 0, 139));
-        back.setForeground(Color.white);
-        back.setBounds(105,400,100,25);
-        back.addActionListener(this);
-        add(back);
+        delete = new JButton("Delete");
+        delete.setBackground(new Color(0, 0, 139));
+        delete.setForeground(Color.white);
+        delete.setBounds(105,400,100,25);
+        delete.addActionListener(this);
+        add(delete);
+        
+        
+       
         
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/delete.jpg"));

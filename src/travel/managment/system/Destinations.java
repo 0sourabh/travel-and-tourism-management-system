@@ -5,12 +5,14 @@ import javax.swing.*;
 
 public class Destinations extends JFrame implements Runnable {
     
+    
+    
     Thread t1;
 
     JLabel caption;
     JLabel[] label = new JLabel[10];
     public void run() {
-    String[] text = new String[]{"Sweden","Udaipur","Italy","France","United Kingdom","Turkey","Austria","Delhi","Greece","Wacchu Valley"};
+    String[] text = new String[]{"Sweden","Udaipur","Italy","Paris","London","Turkey","Austria","Delhi","Greece","Goa"};
 
     try {
         for (int i = 0; i < text.length; i++) {
@@ -34,7 +36,7 @@ public class Destinations extends JFrame implements Runnable {
         setBounds(350, 180, 900, 520);
         
         caption = new JLabel();
-        caption.setBounds(50,20,700,70);
+        caption.setBounds(20,10,700,70);
         caption.setFont(new Font("Tahoma",Font.BOLD,40));
         caption.setForeground(Color.white);
         add(caption);

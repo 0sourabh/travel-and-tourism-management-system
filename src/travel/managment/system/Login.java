@@ -20,7 +20,7 @@ public class Login extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.white);
 
         JPanel p1 = new JPanel();
-        p1.setBackground(Color.white);
+        p1.setBackground(Color.white); 
         p1.setBounds(0, 0, 400, 400);
         p1.setLayout(null);
         add(p1);

@@ -1,5 +1,6 @@
 package travel.managment.system;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,7 +12,8 @@ public class BookHotel extends JFrame implements ActionListener{
     JTextField tfpersons,tfdays;
     String username;
     JLabel labelusername,labelid,labelnumber,labelphone,labelprice;
-    JButton checkprice,bookpackage,back;
+    JButton checkprice,bookpackage,back,viewBookedHotels;
+    JDateChooser dateChooser;
     
     
     BookHotel(String username){
@@ -24,27 +26,27 @@ public class BookHotel extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.white);
         
         JLabel text = new JLabel("BOOK HOTEL");
-        text.setBounds(140, 10, 200, 30);
+        text.setBounds(140, 2, 200, 30);
         text.setFont(new Font("Tahoma", Font.BOLD, 20));
         add(text);
         
         JLabel lblusername = new JLabel("Username");
-        lblusername.setBounds(40, 70, 100, 20);
+        lblusername.setBounds(40, 30, 100, 20);
         lblusername.setFont(new Font("Tahoma", Font.BOLD, 16)); 
         add(lblusername);
         
         labelusername = new JLabel();
-        labelusername.setBounds(250, 70, 200, 20);
+        labelusername.setBounds(250, 30, 200, 20);
         labelusername.setFont(new Font("Tahoma", Font.PLAIN, 16));
         add(labelusername);
         
         JLabel lblpackage = new JLabel("Select Hotel");
-        lblpackage.setBounds(40, 110, 150, 20);
+        lblpackage.setBounds(40, 70, 150, 20);
         lblpackage.setFont(new Font("Tahoma", Font.BOLD, 16));
         add(lblpackage);
         
         chotel = new Choice();
-        chotel.setBounds(250,110,200,20);
+        chotel.setBounds(250,70,200,20);
         add(chotel);
         
         
@@ -61,6 +63,15 @@ public class BookHotel extends JFrame implements ActionListener{
             e.printStackTrace();
         
         }
+        
+        JLabel lbldate = new JLabel("Check In");
+        lbldate.setBounds(40, 110, 150, 20);
+        lbldate.setFont(new Font("Tahoma", Font.BOLD, 16));
+        add(lbldate);
+        
+        dateChooser = new JDateChooser();
+        dateChooser.setBounds(250, 110, 200, 25);
+        add(dateChooser);
         
         
         JLabel lblpersons = new JLabel("Total Persons");
@@ -172,14 +183,14 @@ public class BookHotel extends JFrame implements ActionListener{
         checkprice = new JButton ("Check Price");
         checkprice.setBackground(new Color(0, 0, 139));
         checkprice.setForeground(Color.white);
-        checkprice.setBounds(460,430,120,25);
+        checkprice.setBounds(600,430,120,25);
         checkprice.addActionListener(this);
         add(checkprice);
         
         bookpackage = new JButton ("Book Hotel");
         bookpackage.setBackground(new Color(0, 0, 139));
         bookpackage.setForeground(Color.white);
-        bookpackage.setBounds(600,430,120,25);
+        bookpackage.setBounds(740,430,120,25);
         bookpackage.addActionListener(this);
         add(bookpackage);
         
@@ -187,9 +198,16 @@ public class BookHotel extends JFrame implements ActionListener{
         back = new JButton ("Back");
         back.setBackground(new Color(0, 0, 139));
         back.setForeground(Color.white);
-        back.setBounds(740,430,120,25);
+        back.setBounds(460,430,120,25);
         back.addActionListener(this);
         add(back);
+        
+        viewBookedHotels = new JButton("View Booked Hotels");
+        viewBookedHotels.setBounds(580, 20, 150, 25);
+        viewBookedHotels.setBackground(new Color(0, 0, 139));
+        viewBookedHotels.setForeground(Color.white);
+        viewBookedHotels.addActionListener(this);
+        add(viewBookedHotels);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/bookhotel3.jpg"));
         Image i2 = i1.getImage().getScaledInstance(450, 520, Image.SCALE_DEFAULT);
@@ -261,6 +279,9 @@ public class BookHotel extends JFrame implements ActionListener{
         }else if(ae.getSource() == back){
         
             setVisible(false);
+        }else if(ae.getSource() == viewBookedHotels){
+        
+            new ViewBookedHotel(username); 
         }
     }
     
